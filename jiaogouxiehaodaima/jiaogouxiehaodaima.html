@@ -1,0 +1,240 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="telephone=no">
+
+    </head>
+    <body id="activity-detail" class="zh_CN mm_appmsg" ontouchstart="">
+        
+    <script type="text/javascript">
+        var write_sceen_time = (+new Date());
+    </script>
+    
+    <div id="js_cmt_mine" class="discuss_container editing access" style="display:none;">
+        <div class="discuss_container_inner">
+            <h2 class="rich_media_title">从架构的角度看，如何写好代码？</h2>
+            <span id="log"></span>
+            <div class="frm_textarea_box_wrp">
+                <span class="frm_textarea_box">
+                    <textarea id="js_cmt_input" class="frm_textarea" placeholder="留言将由公众号筛选后显示，对所有人可见。"></textarea>
+                    <div class="emotion_tool">
+                        <span class="emotion_switch" style="display:none;"></span>
+                        <span id="js_emotion_switch" class="pic_emotion_switch_wrp">
+                            <img class="pic_default" src="https://res.wx.qq.com/mmbizwap/zh_CN/htmledition/images/icon/appmsg/emotion/icon_emotion_switch.2x278965.png" alt="">
+                            <img class="pic_active" src="https://res.wx.qq.com/mmbizwap/zh_CN/htmledition/images/icon/appmsg/emotion/icon_emotion_switch_active.2x278965.png" alt="">
+                        </span>
+                        <div class="emotion_panel" id="js_emotion_panel">
+                            <span class="emotion_panel_arrow_wrp" id="js_emotion_panel_arrow_wrp">
+                                <i class="emotion_panel_arrow arrow_out"></i>
+                                <i class="emotion_panel_arrow arrow_in"></i>
+                            </span>
+                            <div class="emotion_list_wrp" id="js_slide_wrapper">
+                                
+                                
+                            </div>
+                            <ul class="emotion_navs" id="js_navbar">
+                                
+                            </ul>
+                        </div>
+                    </div>
+                </span>
+            </div>
+            <div class="discuss_btn_wrp"><a id="js_cmt_submit" class="btn btn_primary btn_discuss btn_disabled" href="javascript:;">提交</a></div>
+            <div class="discuss_list_wrp" style="display:none">
+                <div class="rich_tips with_line title_tips discuss_title_line">
+                    <span class="tips">我的留言</span>
+                </div>
+                <ul class="discuss_list" id="js_cmt_mylist"></ul>
+            </div>
+            <div class="rich_tips tips_global loading_tips" id="js_mycmt_loading">
+                <img src="http://res.wx.qq.com/mmbizwap/zh_CN/htmledition/images/icon/common/icon_loading_white2805ea.gif" class="rich_icon icon_loading_white" alt="">
+                <span class="tips">加载中</span>
+            </div>
+            <div class="wx_poptips" id="js_cmt_toast" style="display:none;">
+                <img alt="" class="icon_toast" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGoAAABqCAYAAABUIcSXAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA3NpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNS1jMDE0IDc5LjE1MTQ4MSwgMjAxMy8wMy8xMy0xMjowOToxNSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDoyMTUxMzkxZS1jYWVhLTRmZTMtYTY2NS0xNTRkNDJiOGQyMWIiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6MTA3QzM2RTg3N0UwMTFFNEIzQURGMTQzNzQzMDAxQTUiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6MTA3QzM2RTc3N0UwMTFFNEIzQURGMTQzNzQzMDAxQTUiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIChNYWNpbnRvc2gpIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6NWMyOGVjZTMtNzllZS00ODlhLWIxZTYtYzNmM2RjNzg2YjI2IiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjIxNTEzOTFlLWNhZWEtNGZlMy1hNjY1LTE1NGQ0MmI4ZDIxYiIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/Pmvxj1gAAAVrSURBVHja7J15rF1TFMbXk74q1ZKHGlMkJVIhIgg1FH+YEpEQJCKmGBpThRoSs5jVVNrSQUvEEENIhGiiNf9BiERICCFIRbUiDa2qvudbOetF3Tzv7XWGffa55/uS7593977n3vO7e5+199p7v56BgQGh0tcmvAUERREUQVEERREUQVEERREUQVEERREUQVEERREUQVEERREUQVEERVAUQVEERVAUQbVYk+HdvZVG8b5F0xj4RvhouB+eCy8KrdzDJc1RtAX8ILxvx98V1GyCSkN98Cx4z/95/Wn4fj6j6tUEeN4wkFSnw1MJqj5NhBfAuwaUHREUg4lqNMmePVsHll/HFhVfe1t3FwpJI8DXCCquDrCWNN4B6Tb4M3Z98aTPmTvh0YHl18PXw29yZiKejoPvcUD6E74yFBJbVDk6Bb7K8aP/Hb4c/tRzEYIqprPhSxzlf4Uvhb/0Xoig8qnHAJ3lqPMzfDH8XZ4LEpRf2sVdA5/sqPO9Qfop70UJyn+/boaPddT5yrq7VUUvTIVJI7q74MMddXR8NB1eXcYvhBpZm0s2w72/o86HFoKvLau/pYaXzjLMdUJ6y0LwtWV9CIIaXtvA8+G9HHV03u5q+K+yH47U0NoRngPv7KjzHDwTLj0bS1BDazfJJlcnOOostC6ysnCT+q80G/sIvFVgeW09D8FPVT0uoP7VfvAD8NjA8pqmuAN+OcYAjso0RbIZ8DGB5TVNcRO8JMaHY9SXSdfa3eeANJimWBLrA7JFiZwIXye+NMUV8CcxP2SRFjXefok7NRjSGZJlWUPvw2/wtNiQirSoXWyMsR28wR7AzzYM0oXw+Y7yK+CLJGeaoqjyrJSdZJD6Ov4+z5y6NJc0Az7NUecHydIUy+v60KNyQHoM3nKI1y7YCFiq0i7uBvgER52vDdKqWn9djhY1Dn4G3n6Ecqm2rF74dvgoR53S0hQxW9RJAZAGW5bSn58QJA27dQ7uIEedjywEX5NKVxCqsY6y+qA+LxFI4+yZ6oH0trWkNan80jygtIUsc5SflgAsDXgehfdx1KkkTRE76tN+Xue2jnTU0Ru1oIbvpt30bBtKhOp5yaaRkts0lic8V1i6dPcIRx2d/l8Y8XtNNEg7OOo8bl1kmmOKnDsO88CaYzejau0hWZqiL7C83oCH4SeTHvwV2BqqsHRVztSEYOmWF80NeXZT6Hd4KflResE9vCnBOlCyGfDNAstHTVPUDWoQ1t3iW+9WNizvlhfd4aerXd+ThqiMfNR6+9LvOOro5OY5JX2H4+F7HZD+kGzlamMgldWiirQsjcwWFbjmqZJteekJLK9pisvgL6RhKvuciZiwzrWWGapfrPy30kBVcSBIrw0aD3PU0XB6cehntq7rTMf7/2iQlktDVdXJLXlg6VjmiYBn6rWSTRCH6hvJ0hQrpcGq8oidsmHpTP8t8DGO9/vcWt9qabiqPgup1yKyQwvC2tSefZ73SSpNkUJ4PlLorlHZ+446nc8f3fIyywlJhwrTuwVSjBa1ccvSxN0hjjoK5xVrYZMd9V6XbFfgBukixTwGLg8sDam3dZR/wZ6L/dJlin1en8LS+bgpFbz3Ygvzu1J1HKxYNqxGpCmaCEo12rrBorD6LRp8UbpcdR5VWhTW35KlKd6QFqjuM2XzwlpnMxTvSkuUwuG/Xlg6NtPjbT6WFimF/VG6LEvXgn8QGDjMbBukVECFwhpoS+CQatfX2Q1q6H7wENHdrfCr0lKleEB9JyxNneus+VJpsVL9TwI6W65LovWIGl3KtVJaLv7LBwYTFEERFEVQFEERFEVQFEERFEVQFEERFEVQFEERFEVQFEERFFWq/hFgADUMN4RzT6/OAAAAAElFTkSuQmCC">
+                <p class="toast_content">已留言</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="js_article" class="rich_media">
+        
+        <div id="js_top_ad_area" class="top_banner">
+ 
+        </div>
+                
+
+        <div class="rich_media_inner">
+            <div id="page-content">
+                <div id="img-content" class="rich_media_area_primary">
+                    <h2 class="rich_media_title" id="activity-name">
+                        【转载】从架构的角度看，如何写好代码？ 
+                    </h2>
+                    <div class="rich_media_meta_list">
+                                                                        <em id="post-date" class="rich_media_meta rich_media_meta_text">2016-04-12</em>
+
+                                                <em class="rich_media_meta rich_media_meta_text">王概凯</em>
+                                                <a class="rich_media_meta rich_media_meta_link rich_media_meta_nickname" href="javascript:void(0);" id="post-user">InfoQ</a>
+                        <span class="rich_media_meta rich_media_meta_text rich_media_meta_nickname">InfoQ</span>
+
+                        <div id="js_profile_qrcode" class="profile_container" style="display:none;">
+                            <div class="profile_inner">
+                                <strong class="profile_nickname">InfoQ</strong>
+                                <img class="profile_avatar" id="js_profile_qrcode_img" src="" alt="">
+
+                                <p class="profile_meta">
+                                <label class="profile_meta_label">微信号</label>
+                                <span class="profile_meta_value">infoqchina</span>
+                                </p>
+
+                                <p class="profile_meta">
+                                <label class="profile_meta_label">功能介绍</label>
+                                <span class="profile_meta_value">有内容的技术社区媒体</span>
+                                </p>
+                                
+                            </div>
+                            <span class="profile_arrow_wrp" id="js_profile_arrow_wrp">
+                                <i class="profile_arrow arrow_out"></i>
+                                <i class="profile_arrow arrow_in"></i>
+                            </span>
+                        </div>
+                    </div>
+                    
+                    
+                    
+                    <div>
+                        <a  href="https://mp.weixin.qq.com/s?__biz=MjM5MDE0Mjc4MA==&mid=403485970&idx=2&sn=5af6adc927d32149bbad1b4191840bf1&scene=1&srcid=0412v5HtwdkqetnSu9DxFFLN&key=b28b03434249256b50cf9e44a5d585f2743f24bfb4cdda4704f96da8239d1e474eedefe1b85bac6ee1968aa78fc1fca0&ascene=0&uin=MTg5ODk1NQ%3D%3D&devicetype=iMac+MacBookAir6%2C2+OSX+OSX+10.11.4+build(15E65)&version=11020201&pass_ticket=cO1hNPDjKIaApt%2FJ5Ew2HnLf3E1Fz0M9Xq50ux6Bykk%3D">原文链接</a>
+                    </div>
+                                                            
+                                                            
+                    
+                    <div class="rich_media_content " id="js_content">
+                        
+                        <p style="margin-bottom: 15px; line-height: normal; text-align: center;"><img data-type="gif" data-ratio="0.1564748201438849" data-w="" data-src="http://mmbiz.qpic.cn/mmbiz/YriaiaJPb26VO5MfjZEicomiaKtwtPdqycofjvnvLZWGlascNTX3pBR9t4Ux7uJbbFJzMuBicCiafZVddiad8bBF2u2vg/0?wx_fmt=gif" style="color: rgb(62, 62, 62); line-height: 25.6px; white-space: pre-wrap; box-sizing: border-box !important; word-wrap: break-word !important; width: auto !important; visibility: visible !important; background-color: rgb(255, 255, 255);"  /></p><p style="margin-top: 15px; margin-bottom: 15px; line-height: 1.75em;">软件架构实际上包括：代码架构，以及承载代码运行的硬件部署架构。实际上，硬件部署架构最终还是由代码的架构来决定。</p><p style="margin-top: 15px; margin-bottom: 15px; line-height: 1.75em;">因为代码架构不合理，是无法把一个运行单元分拆出多个来的，那么硬件架构能分拆的就非常的有限，整个系统最终很难长的更大。<br  /></p><p style="margin-top: 15px; margin-bottom: 15px; line-height: 1.75em;">所以我们经常会听说，重写代码，推翻原有架构，重新设计等等说法，来说明架构的进化。</p><p style="margin-top: 15px; margin-bottom: 15px; line-height: 1.75em;">这实际上就是当初为了完成任务，没有充分思考所带来的后果。这也并不是架构进化的事情，而是个人对问题领域的逐渐深入理解的过程。</p><p style="margin-top: 15px; margin-bottom: 15px; line-height: 1.75em;">所以有必要再讨论一下，代码的架构应该是怎样的。</p><p style="margin-top: 15px; margin-bottom: 15px; line-height: 1.75em;">本文会进一步探讨如何把架构的思考进行落地，细化到我们代码的实践当中，尽量不要让代码成为系统长大的瓶颈，降低架构分拆的成本。</p><p style="margin-top: 15px; margin-bottom: 15px; line-height: 1.75em;">在前面我们提到，软件实际上是对现实生活的模拟，虚拟化。这是一个非常重要的前提，直接决定了我们的代码应该分为几部分。结合每个部署单元所承担的责任，可以明确的拆分为两个不同的责任：</p><ol class="list-number1 list-paddingleft-2" start="1"><li><p style="margin-top: 15px; margin-bottom: 15px; line-height: 1.75em;">表达业务逻辑的代码。很多人把这部分叫做Domain Logic，或者叫Domain Model。这部分实际是来源于生活的，必须保持和现实生活中的切分一致，并非人为的抽象而成。</p></li><li><p style="margin-top: 15px; margin-bottom: 15px; line-height: 1.75em;">对用户提供访问并保存业务逻辑运行结果的代码。计算机的状态保存有一个缺陷，本机保留业务运行结果有很大的问题，一般都在外存储设备上保存，也便于扩展。</p></li></ol><ol class="list-number1 list-paddingleft-2" start="2"></ol><p style="margin-top: 15px; margin-bottom: 15px; line-height: 1.75em;">所以单个部署单元的代码可以分为两个部分，如下图所示：</p><p style="margin-top: 15px; margin-bottom: 15px; line-height: 1.75em;"><inherit><img src="img/0.png" class="" data-type="png" style="width: 100%; height: auto;" data-ratio="1.04136690647482" data-w=""  /></inherit></p><p style="margin-top: 15px; margin-bottom: 15px; line-height: 1.75em;">从这个图中可以看出，软件代码的相关利益人为运行时的访问人员和存储设备。而service的代码是最复杂的，需要服务于三方，代码人员的负担是最重的。</p><p style="margin-top: 15px; margin-bottom: 15px; line-height: 1.75em;">为了把这三方的变化对service的影响降到最低，对于service还必须进一步的分拆为三个部分，让每一个部分都能够独立的变化，这样这三方的变化就不会产生连锁响应，降低成本。如下图所示：</p><p style="margin-top: 15px; margin-bottom: 15px; line-height: 1.75em;"><inherit><img src="img/1.png" class="" data-type="png" style="width: 100%; height: auto;" data-ratio="1.1366906474820144" data-w=""  /></inherit></p><p style="margin-top: 15px; margin-bottom: 15px; line-height: 1.75em;">这样，就划分成了几个责任：</p><ol class="list-number1 list-paddingleft-2" start="1"><li><p style="margin-top: 15px; margin-bottom: 15px; line-height: 1.75em;">Service就专注于user的需求，并组合Glue Code提供的服务完成需求。</p></li></ol><ol class="list-number1 list-paddingleft-2" start="2"><li><p style="margin-top: 15px; margin-bottom: 15px; line-height: 1.75em;">Glue Code专注于组合business的调用，管理Business里面对象的生命周期，并且通过Repository保存或加载Business的状态</p></li></ol><ol class="list-number1 list-paddingleft-2" start="3"><li><p style="margin-top: 15px; margin-bottom: 15px; line-height: 1.75em;">Business专注于实现业务的核心模型。</p></li><li><p style="margin-top: 15px; margin-bottom: 15px; line-height: 1.75em;">Repository专注于数据的保存，并和存储设备一一对应。</p></li></ol><ol class="list-number1 list-paddingleft-2" start="4"></ol><p style="margin-top: 15px; margin-bottom: 15px; line-height: 1.75em;">大家注意看，还是树形架构。并且左侧的主要需要计算机的相关理论知识，并且要直接面对用户的需求。</p><p style="margin-top: 15px; margin-bottom: 15px; line-height: 1.75em;">右侧的更多的需要面对业务的核心。只要这几块的开发人员互相商量好了接口定义，这几个部分的开发就可以并行的进行，极大的提升开发的效率，缩短开发的时间。</p><p style="margin-top: 15px; margin-bottom: 15px; line-height: 1.75em;">要做好这几部分，还需要注意，逻辑只允许存在于Business中，Service、Glue Code、Repository都不允许存在业务逻辑。为什么呢？首先我们来看看什么叫业务逻辑。</p><p style="margin-bottom: 15px; line-height: normal;"><inherit></inherit></p><section style="max-width: 100%; box-sizing: border-box; color: rgb(62, 62, 62); line-height: 25.6px; white-space: normal; word-wrap: break-word !important; background-color: rgb(255, 255, 255);"><section class="Powered-by-XIUMI V5" style="max-width: 100%; box-sizing: border-box; word-wrap: break-word !important;"><section class="" style="margin-top: 10px; margin-bottom: 10px; max-width: 100%; box-sizing: border-box; word-wrap: break-word !important;"><section class="" style="padding: 2px; max-width: 100%; box-sizing: border-box; display: inline-block; word-wrap: break-word !important; background-color: rgb(0, 0, 0);"><section class="" style="margin-right: 5px; padding-right: 8px; padding-left: 8px; max-width: 100%; box-sizing: border-box; display: inline-block; color: rgb(255, 255, 255); word-wrap: break-word !important; background-color: rgb(12, 130, 227);"><section style="max-width: 100%; box-sizing: border-box; word-wrap: break-word !important; font-size: 18px;"><strong>1</strong></section></section><section class="" style="padding-right: 5px; padding-left: 5px; max-width: 100%; box-sizing: border-box; display: inline-block; color: rgb(255, 255, 255); word-wrap: break-word !important;"><section style="max-width: 100%; box-sizing: border-box; word-wrap: break-word !important; font-size: 18px;"><strong>什么叫业务逻辑？</strong></section></section></section></section></section></section><p style="margin-top: 15px; margin-bottom: 15px; line-height: 1.75em;"><inherit>首先这个定义的前提是指软件代码中的逻辑，不是现实生活中的逻辑。在软件代码中，不需缩进和计算的顺序调用，包括缩进的代码目的是catch exception的，都不算逻辑，除此以外都是逻辑。</inherit></p><p style="margin-top: 15px; margin-bottom: 15px; line-height: 1.75em;"><inherit>以下用严格的顺序调用来指代这种代码。因为顺序调用是计算机的特性，由编译器来决定的，当然最本质的是因为我们计算的基础都是图灵机。</inherit></p><p style="margin-top: 15px; margin-bottom: 15px; line-height: 1.75em;"><inherit>在现实生活中，顺序调用也是逻辑，大家不要和我们这里说的业务逻辑相混淆。<br  /></inherit></p><p style="margin-top: 15px; margin-bottom: 15px; line-height: 1.75em;"><span style="color: rgb(0, 82, 255);"><strong>为什么说除了Business代码中有逻辑以外，其他地方不能有逻辑呢？ 我们每个部分分别分析：</strong></span></p><ol class="list-number1 list-paddingleft-2" start="1"><li><p style="margin-top: 15px; margin-bottom: 15px; line-height: 1.75em;">如果service里面不是严格的顺序调用，有很多分支，那么说明这个service做了两件或者两件以上的事情。必须把这个service分拆，确保每个service只做一件事情。</p><p style="margin-top: 15px; margin-bottom: 15px; line-height: 1.75em;">因为如果不这么分拆的话，一旦这个service中的某各部分发生变动，其他的部分的执行必定会受影响。而确定到底有哪些影响的沟通成本非常高，其他相关利益方没有动力去配合，我们往往不会投入精力仔细评估。</p><p style="margin-top: 15px; margin-bottom: 15px; line-height: 1.75em;">最后上线会出很多不可预料的问题，最终会导致损失用户的利益，并且肯定会导致返工，损坏自己的利益。如果是有计算的逻辑的话，比如受益计算，订单金额计算等，那么这部分应该是Business代码需要完成的，不能交给service代码来实现。</p></li><li><p style="margin-top: 15px; margin-bottom: 15px; line-height: 1.75em;">Glue Code里面如果不是严格的顺序调用，同理会和service一样遇到同样的问题。</p></li><li><p style="margin-top: 15px; margin-bottom: 15px; line-height: 1.75em;">Repository里面如果不是严格的顺序调用，包括存储访问的代码里面（比如SQL），会导致逻辑进入到存储设备中。</p><p style="margin-top: 15px; margin-bottom: 15px; line-height: 1.75em;">存储设备的主要目的是拿来存储的，一旦变成了逻辑计算的主体，就会导致存储设备无法通过增加机器的方式横向扩展长大。这个时候就没有架构了，只能换性能更好的机器，这个叫scale up。只有scale out才能算架构。</p></li></ol><p style="margin-top: 15px; margin-bottom: 15px; line-height: 1.75em;">以上都会导致架构无法快速的横向扩展和分拆，并且增加了修改的成本，这些是不符合开发人员以及业务的利益的。</p><section style="max-width: 100%; box-sizing: border-box; color: rgb(62, 62, 62); line-height: 25.6px; white-space: normal; word-wrap: break-word !important; background-color: rgb(255, 255, 255);"><section class="Powered-by-XIUMI V5" style="max-width: 100%; box-sizing: border-box; word-wrap: break-word !important;"><section class="" style="margin-top: 10px; margin-bottom: 10px; max-width: 100%; box-sizing: border-box; word-wrap: break-word !important;"><section class="" style="padding: 2px; max-width: 100%; box-sizing: border-box; display: inline-block; word-wrap: break-word !important; background-color: rgb(0, 0, 0);"><section class="" style="margin-right: 5px; padding-right: 8px; padding-left: 8px; max-width: 100%; box-sizing: border-box; display: inline-block; color: rgb(255, 255, 255); word-wrap: break-word !important; background-color: rgb(12, 130, 227);"><section style="max-width: 100%; box-sizing: border-box; word-wrap: break-word !important; font-size: 18px;"><strong>2</strong></section></section><section class="" style="padding-right: 5px; padding-left: 5px; max-width: 100%; box-sizing: border-box; display: inline-block; color: rgb(255, 255, 255); word-wrap: break-word !important;"><section style="max-width: 100%; box-sizing: border-box; word-wrap: break-word !important; font-size: 18px;"><strong>这么做的好处有哪些呢？</strong></section></section></section></section></section></section><ol class="list-number1 list-paddingleft-2" start="1"><li><p style="margin-top: 15px; margin-bottom: 15px; line-height: 1.75em;">Service、Glue Code、Repository里面的代码是严格的顺序调用，那么这些代码只要做连通性测试即可，不需要单元测试。因为这些代码都需要和很多上下文打交道，很难做单元测试。这样才算是真正的组合。</p></li><li><p style="margin-top: 15px; margin-bottom: 15px; line-height: 1.75em;">Business不访问任何上下文，不访问任何具体的设备，所以这部分代码是非常容易些单元测试的，并且单元测试必须100%覆盖。</p><p style="margin-top: 15px; margin-bottom: 15px; line-height: 1.75em;">因为其他地方没有业务逻辑，所以一旦有问题，就可以断定是Model的问题，单元测试肯定可以发现。如果单元测试没有发现问题，那么单元测试一定有问题。线上问题的模拟也就变得非常的简单，单元测试也能够得到进一步的补充。</p></li><li><p style="margin-top: 15px; margin-bottom: 15px; line-height: 1.75em;">Repository很容易按照存储设备本身的最小访问粒度来完成工作，比如DB，完全可以做到单表访问。</p><p style="margin-top: 15px; margin-bottom: 15px; line-height: 1.75em;">因为这个时候存储设备只关心存取数据，完全和业务没有关系。做表的分拆也是非常容易的事情，存储设备通过增加机器就可以横向扩展长大。很多人会担心说，没有了join，访问DB的次数是不是更多了，会导致性能下降？</p><p style="margin-top: 15px; margin-bottom: 15px; line-height: 1.75em;">按照现在网络的条件，网络访问和Disk IO访问的差距已经不大了，合理的设计下，多访问几次DB并不会导致这个问题。另外如果多台DB的话，还能通过并行加速访问。</p></li><li><p style="margin-top: 15px; margin-bottom: 15px; line-height: 1.75em;">由于Service、Glue Code、Repository代码简单了，才可以让我们的开发人员投入更多的时间研究业务，毕竟这部分才是软件所真正服务的对象。</p></li></ol><p style="margin-top: 15px; margin-bottom: 15px; line-height: 1.75em;">我们再来看一个实际的例子，如下图所示：</p><p style="margin-top: 15px; margin-bottom: 15px; line-height: 1.75em;"><inherit><img src="img/2.jpeg" class="" data-type="jpeg" data-ratio="0.8471223021582733" data-w="" style="width: 100%; height: auto;"  /></inherit></p><p style="margin-top: 15px; margin-bottom: 15px; line-height: 1.75em;">Manager类实际就是Glue Code。有几个注意点需要说明一下：</p><ol class="list-number1 list-paddingleft-2" start="1"><li><p style="margin-top: 15px; margin-bottom: 15px; line-height: 1.75em;">不能把Business Model当做数据对象来处理，Model关心的实际上是业务行为，数据只是是这些行为的结果。所以Glue Code需要把Model转换为Entity，Entity和存储设备里面的存储粒度一一对应。</p><p style="margin-top: 15px; margin-bottom: 15px; line-height: 1.75em;">比如在DB中，每个Entity对应一张表，并且跟着表的变化而变化，这样就保证存储的变更不会影响Model。同样Service和用户之间的数据交互，也是不会和Model之间相关的，确保用户的需求变化，不会影响到Model。</p><p style="margin-top: 15px; margin-bottom: 15px; line-height: 1.75em;">因为用户的需求变化是最频繁的，没有逻辑，可以让我快速的满足业务的需求。</p></li><li><p style="margin-top: 15px; margin-bottom: 15px; line-height: 1.75em;">在Service这里，最好不要考虑代码重用。因为当多个不同的角色访问同一个接口，一旦某个角色的需求发生了变化，就会要求开发人员去修改。</p><p style="margin-top: 15px; margin-bottom: 15px; line-height: 1.75em;">而这个修改往往会影响到其他的角色，需要这些角色一起配合来确定是否受影响，但是这些角色因为没有需求，往往不会配合。这样就给开发人员造成了很多不必要的沟通，成本是非常高的。</p><p style="margin-top: 15px; margin-bottom: 15px; line-height: 1.75em;">最终都会导致线上Bug，影响最终的用户。所以尽量给不同的角色不同的Service，避免重用，降低沟通成本。很多人会说这样Service不就太多了吗？ 这样Service注册，查找等管理需求就出现了，Service治理中心就是来解决这个问题的。</p><p style="margin-top: 15px; margin-bottom: 15px; line-height: 1.75em;">因为Service里面没有逻辑，所以开发和管理非常的简单，可以快速应对业务的变化。我们只有更快地变，更容易的变，才能更好地应对变。</p></li><li><p style="margin-top: 15px; margin-bottom: 15px; line-height: 1.75em;">Business Model是必须要重用的，一旦发现重用出现问题，那么说明Business Model的识别出现了问题，这是一个我们要重新思考Model的信号。</p><p style="margin-top: 15px; margin-bottom: 15px; line-height: 1.75em;">Business Model必须是一个完美的树状，如果不是，也说明Model的识别出了问题。</p></li></ol><p style="margin-top: 15px; margin-bottom: 15px; line-height: 1.75em;">在实际操作中，Service、Glue Code、Repository不能有逻辑，实际上和很多人的观念是冲突的，认为这个根本做不到。做到这一点需要很多的学习成本，但是一定可以做得到。</p><p style="margin-top: 15px; margin-bottom: 15px; line-height: 1.75em;">当发现做不到的时候，可以断定是业务的分析出了问题。比如不该合并的合并了，不该计算的计算了。这个问题一定有办法解决的，做不到都是理由，无非是想早点把自己的工作结束罢了。</p><p style="margin-top: 15px; margin-bottom: 15px; line-height: 1.75em;">虽然刚开始会比较困难，一旦把这个观念变成自觉，开发的质量和效率马上就能高好几个级别。</p><p style="margin-top: 15px; margin-bottom: 15px; line-height: 1.75em;">我的游泳教练曾和我说过这些话，我至今记忆犹新：“业余选手，越想从水里浮起来，就越想把头抬起来，身体反而沉下去。只有克服恐惧，把头往水里压下去，身体才能够从水里浮起来。真正专业的习惯往往是和我们日常的行为相反的”。</p><p style="margin-top: 15px; margin-bottom: 15px; line-height: 1.75em;">我们真正想快速的完成代码工作，就要克服自己对时间的恐惧，真正的去研究业务的问题，相关stakeholder的利益，把这个变成我们的习惯。</p><p style="margin-top: 15px; margin-bottom: 15px; line-height: 1.75em;">写代码的时候让该出现逻辑的地方出现逻辑，让不该出现的地方不能出现。一旦不该出现的地方出现了逻辑，那么要马上意识到，这个地方是一个坑，这个问题一定和业务的分析不透彻有关系。</p><p style="margin-top: 15px; margin-bottom: 15px; line-height: 1.75em;">很多人可能会把这个做法和Martin Fowler曾经提出过充血模型和贫血模型来比较，和Domain Driven Design来比较，其实没有必要。</p><p style="margin-top: 15px; margin-bottom: 15px; line-height: 1.75em;">这个分拆完全是从软件所解决的问题，根据软件架构推导出来的，很多地方和两位前辈的观点是一致的，但是并不完全等同。</p><p style="margin-top: 15px; margin-bottom: 15px; line-height: 1.75em;">以上只是针对单一的Service部署单元的分析，扩展开去，对于其他的部署单元也是类似的。每个单元的下一级都可以认为是Repository，每个单元的上一级都可以认为是User。</p><p style="margin-top: 15px; margin-bottom: 15px; line-height: 1.75em;">这些实践在我自己的项目中都有用到，非常的有效，迭代的速度非常的快。很多人担心Business Model建不好，其实没关系，刚开始可以粗糙一点，后续可以慢慢的完善。</p><p style="margin-top: 15px; margin-bottom: 15px; line-height: 1.75em;">这个架构已经隔离好了每个部分的变化对其他部分的影响，变化成本都在可控的范围之内。</p><section label="Copyright © 2014 playhudong All Rights Reserved." style="border: none; margin-top: 5px; padding-top: 10px; padding-bottom: 10px; background-image: none; background-attachment: initial; background-size: initial; background-origin: initial; background-clip: initial; background-position: initial; background-repeat: initial;" donone="shifuMouseDownOther(&#39;shifu_o_017&#39;)"><img data-src="http://mmsns.qpic.cn/mmsns/wyice8kFQhf5geQK3gu2FUugjB8iaSGpjOiaELyUkOxkYcTC6WqiaValAg/0" style="width: 100%; height: 1px; margin-right: auto; margin-left: auto; display: block;" data-ratio="0.0017985611510791368" data-w=""  /></section><p style="margin-top: 5px; margin-bottom: 5px; max-width: 100%; min-height: 1em; white-space: pre-wrap; color: rgb(62, 62, 62); line-height: 25.6px; box-sizing: border-box !important; word-wrap: break-word !important; background-color: rgb(255, 255, 255);"><img data-type="gif" data-ratio="0.3902877697841727" data-w="" width="auto" data-src="http://mmbiz.qpic.cn/mmbiz/YriaiaJPb26VO5MfjZEicomiaKtwtPdqycofeojb7anLrsPLaZwCW1AdmEPcH2zfgEgmKmgntb0DoU2d8OQuwtwcyg/0?wx_fmt=gif" style="line-height: 25.6px; box-sizing: border-box !important; word-wrap: break-word !important; width: auto !important; visibility: visible !important;"  /></p>
+                    </div>
+                    <script type="text/javascript">
+                        var first_sceen__time = (+new Date());
+
+                        if ("" == 1 && document.getElementById('js_content'))
+                            document.getElementById('js_content').addEventListener("selectstart",function(e){ e.preventDefault(); });
+
+                                        (function(){
+                            if (navigator.userAgent.indexOf("WindowsWechat") != -1){
+                                var link = document.createElement('link');
+                                var head = document.getElementsByTagName('head')[0];
+                                link.rel = 'stylesheet';
+                                link.type = 'text/css';
+                                link.href = "https://res.wx.qq.com/mmbizwap/zh_CN/htmledition/style/page/appmsg/page_mp_article_improve_winwx2c9cd6.css";
+                                head.appendChild(link);
+                            }
+                        })();
+                    </script>
+                    <link rel="stylesheet" type="text/css" href="https://res.wx.qq.com/mmbizwap/zh_CN/htmledition/style/page/appmsg/page_mp_article_improve_combo2d1390.css">
+                    
+                    
+                                        
+                                        
+                                        <div class="rich_media_tool" id="js_toobar3">
+                                                                    <div id="js_read_area3" class="media_tool_meta tips_global meta_primary" style="display:none;">阅读 <span id="readNum3"></span></div>
+
+                        <span style="display:none;" class="media_tool_meta meta_primary tips_global meta_praise" id="like3">
+                            <i class="icon_praise_gray"></i><span class="praise_num" id="likeNum3"></span>
+                        </span>
+
+                        <a id="js_report_article3" style="display:none;" class="media_tool_meta tips_global meta_extra" href="javascript:void(0);">投诉</a>
+
+                    </div>
+
+
+
+                                    </div>
+
+                <div class="rich_media_area_primary sougou" id="sg_tj" style="display:none">
+
+                </div>
+
+                <div class="rich_media_area_extra">
+
+                    
+                                        <div class="mpda_bottom_container" id="js_bottom_ad_area">
+                        
+                    </div>
+                                        
+                    <div id="js_iframetest" style="display:none;"></div>
+                                        
+                                        <div class="rich_media_extra" id="js_cmt_area" style="display:none">
+
+                        <div class="discuss_container" id="js_cmt_main" style="display:none">
+                            <div class="rich_tips with_line title_tips discuss_title_line">
+                                <span class="tips">精选留言</span>
+                            </div>
+                            <p class="tips_global tc title_bottom_tips" id="js_cmt_nofans1" style="display:none;">关注该公众号可参与留言</p>
+                            <p class="discuss_icon_tips title_bottom_tips tr" id="js_cmt_addbtn1" style="display:none">
+                                
+                                                                <a href="#comment">写留言<img class="icon_edit" src="http://res.wx.qq.com/mmbizwap/zh_CN/htmledition/images/icon/appmsg/icon_edit25ded2.png" alt=""></a>
+                                                            </p>
+                            <ul class="discuss_list" id="js_cmt_list"></ul>
+                        </div>
+
+
+                        <div class="tips_global rich_split_tips tc" id="js_cmt_nofans2" style="display:none;">
+                            关注该公众号可参与留言
+                        </div>
+
+                        <p class="discuss_icon_tips rich_split_tips tr" id="js_cmt_addbtn2" style="display:none">
+                            
+                                                        <a href="#comment">写留言<img class="icon_edit" src="http://res.wx.qq.com/mmbizwap/zh_CN/htmledition/images/icon/appmsg/icon_edit25ded2.png" alt=""></a>
+                                                    </p>
+
+                        <p class="rich_split_tips tc tips_global" id="js_cmt_tips" style="display:none;"></p>
+
+
+                        <div class="rich_tips tips_global loading_tips" id="js_cmt_loading">
+                            <img src="http://res.wx.qq.com/mmbizwap/zh_CN/htmledition/images/icon/common/icon_loading_white2805ea.gif" class="rich_icon icon_loading_white" alt="">
+                            <span class="tips">加载中</span>
+                        </div>
+
+                        <div class="rich_tips with_line tips_global" id="js_cmt_statement" style="display:none">
+                            <span class="tips">以上留言由公众号筛选后显示</span>
+                        </div>
+
+                        <p class="rich_split_tips tc" id="js_cmt_qa" style="display:none;">
+                            <a href="http://kf.qq.com/touch/sappfaq/150211YfyMVj150313qmMbyi.html?scene_id=kf264">
+                                了解留言功能详情
+                            </a>
+                        </p>
+
+                    </div>
+                                    </div>
+               
+            </div>
+            <div id="js_pc_qr_code" class="qr_code_pc_outer" style="display:none;">
+                <div class="qr_code_pc_inner">
+                    <div class="qr_code_pc">
+                        <img id="js_pc_qr_code_img" class="qr_code_pc_img">
+                        <p>微信扫一扫<br>关注该公众号</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    </body>
+</html>
+<script>
+ // var items = document.getElementsByTagName("img");
+ // for(var i = 0;i<items.length;i++){
+ //   var imgDataSrc = items[i].getAttribute('data-src');
+ //   if (imgDataSrc) {
+ //     items[i].setAttribute('src', imgDataSrc);
+ //     items[i].removeAttribute('data-src');
+ //   };
+ // }
+</script>
